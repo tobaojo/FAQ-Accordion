@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@theme {
+  --color-purple-100: #f8f5fc;
+  --color-purple-600: #8a768a;
+  --color-purple-950: #2a1b2f;
+}
+
+@layer utilities {
+  .purple-100 {
+    color: var(--color-purple-100);
+  }
+  .purple-600 {
+    color: var(--color-purple-600);
+  }
+  .purple-950 {
+    color: var(--color-purple-);
+  }
+}
