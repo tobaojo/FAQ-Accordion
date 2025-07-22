@@ -12,22 +12,35 @@ const AccordionItem = ({ title, body }: AccordionItemProps) => {
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
+    const element = scope.current?.querySelector('.text-item') as HTMLElement;
+
+    if (!element) return;
+
     if (toggle) {
-      animate('.text-item', { y: 5, opacity: 1, display: 'block' }, { duration: 0.3, ease: 'easeInOut' });
+      element.style.display = 'block';
+      const height = element.scrollHeight;
+      animate(element, { opacity: [0, 1], height: `${height}px` }, { duration: 0.2, ease: 'easeOut' });
     } else {
-      animate('.text-item', { y: 0, opacity: 0, display: 'none' }, { duration: 0.3, ease: 'easeInOut' });
+      const height = element.scrollHeight;
+      element.style.height = `${height}px`;
+      animate(element, { opacity: [1, 0], height: [height, 0] }, { duration: 0.2, ease: 'easeOut' });
     }
   }, [animate, scope, toggle]);
 
   const onToggle = () => setToggle(!toggle);
 
+  const handleClick = () => setToggle(!toggle);
+
   return (
-    <div ref={scope}>
-      <div className="flex flex-row space-x-5">
-        <h2>{title}</h2>
+    <div ref={scope} className="my-5 h-auto">
+      <div className="header-item flex flex-row justify-between text-lg font-semibold items-center my-2">
+        <h2 className="hover:text-purple-500 hover:cursor-pointer" onClick={handleClick}>
+          {title}
+        </h2>
         <AccordionBtn toggle={toggle} onToggle={onToggle} />
       </div>
-      <p className="text-item">{body}</p>
+      <p className="text-item text-item overflow-hidden opacity-0 h-0 text-purple-600 text-[0.875rem] ">{body}</p>
+      <div className="w-full bg-purple-100 h-[0.063rem] my-[1.2rem]"></div>
     </div>
   );
 };

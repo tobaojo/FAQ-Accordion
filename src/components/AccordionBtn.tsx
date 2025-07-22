@@ -7,8 +7,8 @@ interface AccordionBtnProps {
 }
 const AccordionBtn = ({ toggle, onToggle }: AccordionBtnProps) => {
   return (
-    <button onClick={onToggle}>
-      <img src={toggle ? Minus : Plus} alt="plus-icon" />
+    <button onClick={onToggle} className="w-1/8 md:w-[2.5rem] justify-self-end flex-none hover:cursor-pointer">
+      <img src={toggle ? Minus : Plus} alt="plus-icon" className="w-full" />
     </button>
   );
 };
