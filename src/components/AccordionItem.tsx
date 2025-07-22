@@ -34,7 +34,7 @@ const AccordionItem = ({ title, body }: AccordionItemProps) => {
   return (
     <div ref={scope} className="my-5 h-auto">
       <div className="header-item flex flex-row justify-between text-lg font-semibold items-center my-2">
-        <h2 className="hover:text-purple-500 hover:cursor-pointer" onClick={handleClick}>
+        <h2 className="hover:text-purple-500 hover:cursor-pointer text-purple-950" onClick={handleClick}>
           {title}
         </h2>
         <AccordionBtn toggle={toggle} onToggle={onToggle} />
